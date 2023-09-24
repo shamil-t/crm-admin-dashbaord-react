@@ -11,8 +11,8 @@ interface RevenueCardItemProps {
 
 export function RevenueCardItem({data}: RevenueCardItemProps) {
     return <div
-        className="revenue-comp md:mx-3 mt-1 md:mt-0 flex flex-row w-full mx-auto md:justify-center items-center overflow-hidden">
-        <img src={data.icon} alt="" className="h-14 md:h-20 ms-10 md:ms-0 me-1 md:me-3 relative"/>
+        className="revenue-comp md:mx-1 mt-1 md:mt-0 flex flex-row w-full mx-auto md:justify-center items-center overflow-hidden md:pe-5">
+        <img src={data.icon} alt="" className="h-14 md:h-20 ms-10 md:ms-0 me-1 md:me-2 relative"/>
         <div className="flex flex-col ms-3">
             <div className="title text-md md:text-lg text-gray-300">{data.titleText}</div>
 

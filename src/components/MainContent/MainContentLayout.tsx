@@ -2,14 +2,7 @@ import {Avatar, Button, Col, ConfigProvider, Divider, Dropdown, MenuProps, Row} 
 
 
 import {ChevronUpIcon} from "@heroicons/react/24/solid";
-import {
-    ArrowRightIcon,
-    ChevronDownIcon,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ClockIcon,
-    VideoCameraIcon
-} from "@heroicons/react/24/outline";
+import {ArrowRightIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/outline";
 import {DropDownComponent, DropDownComponentGrey} from "./DropDownComponent.tsx";
 import {RevenueCardItem} from "./RevenueCardItem.tsx";
 import {TransactionHistoryTable} from "./TransactionHistoryTable.tsx";
@@ -20,6 +13,8 @@ import {RevenueCardItemData} from "../../dummy-data/revenue-card.tsx";
 import laptop from '../../assets/laptop.png'
 import book from '../../assets/book.png'
 import books from '../../assets/books.png'
+import {CalenderEventItem} from "./CalenderEventItem.tsx";
+
 
 export const MainContentLayout = () => {
     const items: MenuProps['items'] = [
@@ -66,11 +61,11 @@ export const MainContentLayout = () => {
                 {/**/}
                 <div className="bg-white w-full h-[100%] flex flex-col justify-start items-center">
                     <div
-                        className="revenue-card bg-[#6e62e5] py-3 md:py-6 md:p-3 min-h-[150px] my-auto rounded-2xl w-full
+                        className="revenue-card bg-[#6e62e5] px-3 py-3 md:py-4 md:p-3 min-h-[150px] my-auto rounded-2xl w-full
                          flex justify-between items-center">
-                        <Row align="middle" className="w-full" justify="space-between" gutter={[8, 8]}>
+                        <Row align="middle" className="w-full" justify="space-between">
                             {RevenueCardItemData.map((item, i) => (
-                                <Col flex={1} key={i}>
+                                <Col key={i}>
                                     <RevenueCardItem data={item}/>
                                 </Col>
                             ))}
@@ -156,7 +151,7 @@ export const MainContentLayout = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full md:w-4/12 xl:ps-8 overflow-hidden px-6 xl:px-10">
+            <div className="w-full md:w-4/12 xl:ps-8 overflow-hidden px-6 xl:px-10 mt-10 md:mt-0">
                 <div className="bg-white w-full h-full">
                     <div className="text-lg pb-3 text-violet-600">Premium Access</div>
                     <div
@@ -228,21 +223,7 @@ export const MainContentLayout = () => {
                             </div>
                             <div className="flex flex-col mt-4">
                                 {calendarData.events.map((e, i) => <div key={i}>
-                                    <div className="flex flex-row justify-start h-full w-full p-2">
-                                        <div className="bg-gray-200 rounded-full p-4">
-                                            <img src={e.icon} alt="icon" className="h-9"/>
-                                        </div>
-                                        <div className="flex flex-col flex-1 justify-between ms-5 py-2">
-                                            <span className="text-base font-[500]">{e.title}</span>
-                                            <span className="text-sm text-gray-400 flex flex-row items-center">
-                                              <VideoCameraIcon className="h-4 text-gray-400 pe-3"/> {e.location}</span>
-                                        </div>
-                                        <div className="flex flex-col justify-end items-end">
-                                            <span className="text-gray-400 flex flex-row">
-                                                <ClockIcon className="h-5 me-2"/>{e.time}
-                                            </span>
-                                        </div>
-                                    </div>
+                                    <CalenderEventItem event={e}/>
                                 </div>)}
                             </div>
                         </div>
