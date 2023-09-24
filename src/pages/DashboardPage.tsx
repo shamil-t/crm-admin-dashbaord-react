@@ -1,7 +1,7 @@
-import {Sidebar} from "../components/SidebarComponent/Sidebar.tsx";
+import {Sidebar} from "../components/LeftSidebar/Sidebar.tsx";
 import {Layout} from 'antd';
-import {HeaderContent} from "../components/HeaderComponent/HeaderContent.tsx";
-import {MainContentLayout} from "../components/MainContentComponent/MainContentLayout.tsx";
+import {HeaderContent} from "../components/MainHeader/HeaderContent.tsx";
+import {MainContentLayout} from "../components/MainContent/MainContentLayout.tsx";
 
 const {Header, Content, Sider} = Layout;
 
@@ -17,7 +17,7 @@ export const DashboardPage = () => {
                 onCollapse={(collapsed, type) => {
                     console.log(collapsed, type);
                 }}
-                style={{background: '#fff', height: '100vh'}}
+                style={{background: '#fff', height: '100vh', minWidth: '200px'}}
             >
                 <Sidebar/>
 
@@ -26,7 +26,7 @@ export const DashboardPage = () => {
                 <Header style={{padding: 0, minHeight: '80px'}} className="bg-white">
                     <HeaderContent/>
                 </Header>
-                <Content className="mt-16 md:mt-10">
+                <Content className="mt-16 md:mt-6">
                     <MainContentLayout/>
                 </Content>
             </Layout>
