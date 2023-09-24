@@ -156,9 +156,9 @@ export const MainContentLayout = () => {
                     <div className="text-lg pb-3 text-violet-600">Premium Access</div>
                     <div
                         className="text-2xl md:text-3xl xl:text-5xl font-[500] flex flex-col justify-center items-center">
-                        <span className="w-full">Take Back <br/> Your Creative <br/> Control</span>
-                        <div
-                            className="flex sm:w-full md:w-full lg:w-full xl:w-fit flex-row justify-start items-center 2xl:-mt-10">
+                        <span className="w-full">Take Back <br/> Your Creative <br/> Control
+                        <span
+                            className="ps-5 pt-4">
                             <ConfigProvider theme={{components: {Avatar: {groupOverlapping: -12,}}}}>
                                 <Avatar.Group maxCount={3} maxStyle={{
                                     color: '#fff',
@@ -173,8 +173,8 @@ export const MainContentLayout = () => {
                                         key={i} src={u}/>)}
                                 </Avatar.Group>
                             </ConfigProvider>
-                        </div>
-
+                        </span>
+                    </span>
                     </div>
 
                     <Dropdown menu={{items}} trigger={['click']}>
