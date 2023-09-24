@@ -5,7 +5,7 @@ import {mainNavbarData, projectsNavData, toolsNavData} from "../../dummy-data/na
 export const Sidebar = () => {
 
     return (
-        <nav className="border-r border-gray-200 h-full">
+        <nav className="border-r border-gray-200 w-full md:w-[200px] h-full xl:fixed left-0 bottom-0 top-0">
             <div className="flex flex-col items-center justify-start p-4">
                 <a href="/" className="flex items-center hover:text-violet-700">
                     <img src={icon} className="h-9 mr-3" alt="Omio logo"/>
