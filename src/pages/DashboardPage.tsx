@@ -11,12 +11,6 @@ export const DashboardPage = () => {
             <Sider
                 breakpoint="lg"
                 collapsedWidth="0"
-                onBreakpoint={(broken) => {
-                    console.log(broken);
-                }}
-                onCollapse={(collapsed, type) => {
-                    console.log(collapsed, type);
-                }}
                 style={{background: '#fff', height: '100vh', minWidth: '200px'}}
             >
                 <Sidebar/>
