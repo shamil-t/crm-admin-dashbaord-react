@@ -2,7 +2,14 @@ import {Avatar, Button, Col, ConfigProvider, Divider, Dropdown, MenuProps, Row} 
 
 
 import {ChevronUpIcon} from "@heroicons/react/24/solid";
-import {ArrowRightIcon, ChevronDownIcon} from "@heroicons/react/24/outline";
+import {
+    ArrowRightIcon,
+    ChevronDownIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
+    ClockIcon,
+    VideoCameraIcon
+} from "@heroicons/react/24/outline";
 import {DropDownComponent, DropDownComponentGrey} from "./DropDownComponent.tsx";
 import {RevenueCardItem} from "./RevenueCardItem.tsx";
 import {TransactionHistoryTable} from "./TransactionHistoryTable.tsx";
@@ -10,6 +17,9 @@ import {AnalyticsChart} from "./AnalyticsChart.tsx";
 import {users} from "../../dummy-data/user-icons.tsx";
 import {RevenueCardItemData} from "../../dummy-data/revenue-card.tsx";
 
+import laptop from '../../assets/laptop.png'
+import book from '../../assets/book.png'
+import books from '../../assets/books.png'
 
 export const MainContentLayout = () => {
     const items: MenuProps['items'] = [
@@ -24,6 +34,31 @@ export const MainContentLayout = () => {
     ];
 
     const TransactionDropDownData = [{title: 'Recipient'}, {title: 'Amount'}, {title: 'Status'}]
+
+    const weekDays: string[] = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const weekDates: number[] = [11, 12, 13, 14, 15, 16, 17];
+
+    const calendarData = {
+        weekDays: weekDays,
+        activeDate: 13,
+        weekDates: weekDates,
+        events: [{
+            icon: laptop,
+            title: 'Meeting with Client',
+            location: 'Google Meet',
+            time: '12 pm'
+        }, {
+            icon: books,
+            title: 'Weekly Report',
+            location: 'Google Meet',
+            time: '03 pm'
+        }, {
+            icon: book,
+            title: 'Daily Scrum Meeting',
+            location: 'Google Meet',
+            time: '05 pm'
+        }]
+    }
 
     return (
         <div className="flex flex-col md:flex-row p-4 xl:px-10 xl:py-4">
@@ -121,7 +156,7 @@ export const MainContentLayout = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full md:w-4/12 xl:ps-8 overflow-hidden md:px-10">
+            <div className="w-full md:w-4/12 xl:ps-8 overflow-hidden px-6 xl:px-10">
                 <div className="bg-white w-full h-full">
                     <div className="text-lg pb-3 text-violet-600">Premium Access</div>
                     <div
@@ -162,8 +197,55 @@ export const MainContentLayout = () => {
                     <Divider className="my-5 md:my-8"/>
 
                     {/*    Calendar*/}
-                    <div>
-
+                    <div className="flex flex-col justify-start items-start w-full">
+                        <div className="flex flex-row justify-between items-center w-full">
+                            <div className="text-xl font-[500]">October 2023</div>
+                            <div className="buttons flex flex-row justify-end">
+                                <button
+                                    className="rounded-full border border-gray-200 text-gray-500 flex justify-center items-center me-2"
+                                    style={{width: '40px', height: '40px', fontSize: '14px'}}>
+                                    <ChevronLeftIcon className="h-5"/>
+                                </button>
+                                <button
+                                    className="rounded-full border border-gray-200 text-violet-800 flex justify-center items-center me-2"
+                                    style={{width: '40px', height: '40px', fontSize: '14px'}}>
+                                    <ChevronRightIcon className="h-5"/>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="flex flex-col w-full mt-5">
+                            <div className="flex flex-row justify-around items-center w-full">
+                                {calendarData.weekDays.map((w, i) =>
+                                    <span className="text-sm text-gray-400 w-8" key={i}>{w}</span>
+                                )}
+                            </div>
+                            <div className="flex flex-row justify-around items-center w-full mt-3">
+                                {calendarData.weekDates.map((w, i) =>
+                                    <div
+                                        className={`text-sm text-gray-600 p-2 px-3 text-center rounded-full ${calendarData.activeDate === w ? 'bg-violet-500 text-white' : ''}`}
+                                        key={i}>{w}</div>
+                                )}
+                            </div>
+                            <div className="flex flex-col mt-4">
+                                {calendarData.events.map((e, i) => <div key={i}>
+                                    <div className="flex flex-row justify-start h-full w-full p-2">
+                                        <div className="bg-gray-200 rounded-full p-4">
+                                            <img src={e.icon} alt="icon" className="h-9"/>
+                                        </div>
+                                        <div className="flex flex-col flex-1 justify-between ms-5 py-2">
+                                            <span className="text-base font-[500]">{e.title}</span>
+                                            <span className="text-sm text-gray-400 flex flex-row items-center">
+                                              <VideoCameraIcon className="h-4 text-gray-400 pe-3"/> {e.location}</span>
+                                        </div>
+                                        <div className="flex flex-col justify-end items-end">
+                                            <span className="text-gray-400 flex flex-row">
+                                                <ClockIcon className="h-5 me-2"/>{e.time}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>)}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
